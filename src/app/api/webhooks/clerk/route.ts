@@ -35,7 +35,6 @@ export async function POST(req: Request) {
             "svix-signature": svix_signature
         }) as WebhookEvent;
     } catch (error) {
-        
         return new Response("Error occured -- couldn't verify webhook", { status: 400 });
     }
 
@@ -68,7 +67,14 @@ export async function POST(req: Request) {
             });
             break;
         case "user.deleted":
-
+            await db.user.delete({
+                where: {
+                    clerkUserId: payload.data.id
+                }
+            });
+            break;
+        default:
+            return new Response("Error occured -- unhandled webhook evt", { status: 400 });
     }
 
     return new Response("", { status: 200 });
