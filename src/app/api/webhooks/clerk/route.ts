@@ -57,7 +57,16 @@ export async function POST(req: Request) {
             });
             break;
         case "user.updated":
-
+            await db.user.update({
+                data: {
+                    username: payload.data.username,
+                    imageUrl: payload.data.image_url
+                },
+                where: {
+                    clerkUserId: payload.data.id
+                }
+            });
+            break;
         case "user.deleted":
 
     }
