@@ -1,24 +1,24 @@
+import { Suspense } from "react"
 import { redirect } from "next/navigation"
 import { getUser } from "@/actions/auth-service"
 import Container from "./_components/container"
 import Navbar from "./_components/navbar"
-import Sidebar from "./_components/sidebar"
+import Sidebar, { SidebarSkeleton } from "./_components/sidebar"
 
 const SiteLayout = async ({
     children
 }: {
     children: React.ReactNode
 }) => {
-    const user = await getUser();
-
-    if (!user)
-        return redirect("/account-setup");
+    await getUser(false);
 
     return (
         <>
             <Navbar />
             <div className="flex h-full pt-20">
-                <Sidebar />
+                <Suspense fallback={<SidebarSkeleton />}>
+                    <Sidebar />
+                </Suspense>
                 <Container>
                     {children}
                 </Container>

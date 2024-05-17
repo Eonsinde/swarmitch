@@ -1,13 +1,13 @@
 "use client"
 import { useSidebar } from "@/store/use-sidebar"
 import { User } from "@prisma/client"
-import UserItem from "./user-item"
+import UserItem, { UserItemSkeleton } from "./user-item"
 
 type Props = {
     users: User []
 }
 
-const Recommended = ({ users }: Props) => {
+export default function Recommended({ users }: Props) {
     const { collapsed } = useSidebar();
 
     const showLabel = !collapsed && users.length > 0;
@@ -34,5 +34,13 @@ const Recommended = ({ users }: Props) => {
         </div>
     )
 }
- 
-export default Recommended
+
+export function RecommendedSkeleton() {
+    return (
+        <ul className="px-2">
+            {new Array(3).fill(1).map((_, i) => (
+                <UserItemSkeleton key={i} />
+            ))}
+        </ul>
+    )
+}

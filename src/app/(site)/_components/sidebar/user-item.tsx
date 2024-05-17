@@ -14,11 +14,11 @@ type Props = {
     isLive?: boolean
 }
 
-const UserItem = ({
+export default function UserItem({
     username,
     imageUrl,
     isLive
-}: Props) => {
+}: Props) {
     const pathname = usePathname();
     const { collapsed } = useSidebar();
 
@@ -58,5 +58,14 @@ const UserItem = ({
         </Link>
     )
 }
- 
-export default UserItem
+
+export function UserItemSkeleton() {
+    return (
+        <li className="flex items-center gap-x-4 py-2 px-3">
+            <Skeleton className="min-h-[32px] min-w-[32px] rounded-full" />
+            <div className="flex-1">
+                <Skeleton className="h-6" />
+            </div>
+        </li>
+    )
+}
