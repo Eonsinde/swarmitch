@@ -19,6 +19,7 @@
     ],
     "paths": {
       "@/components/*": ["./src/components/*"],
+      "@/store/*": ["./src/store/*"],
       "@/context/*": ["./src/context/*"],
       "@/config/*": ["./src/config/*"],
       "@/lib/*": ["./src/lib/*"],
