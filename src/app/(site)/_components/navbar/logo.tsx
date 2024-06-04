@@ -12,7 +12,7 @@ const Logo = () => {
     return (
         <Link href="/">
             <div className="flex items-center gap-x-4 hover:opacity-75 transition">
-                <div className="bg-white shrink-0 mr-10 lg:mr-0 p-1.5 rounded-full">
+                <div className="bg-white shrink-0 mr-6 lg:mr-0 p-1.5 rounded-full">
                     <Image
                         src="/swarmitch.png"
                         height={30}

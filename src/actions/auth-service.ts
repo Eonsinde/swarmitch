@@ -18,11 +18,9 @@ export const getUser = async (activeSessionExpected=true) => {
         }
     });
 
-    if (!user && activeSessionExpected)
-        // if you're expected to be logged in and you're not
+    if (!user)
+        // if you're logged in with clerk and no registered User account in our DB
         redirect("/account-setup");
-    else
-        return null;
 
     return user;
 }
