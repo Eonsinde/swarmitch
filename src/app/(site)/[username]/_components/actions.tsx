@@ -1,8 +1,8 @@
 "use client"
-import { onFollow } from "@/actions/follow"
-import { Button } from "@/components/ui/button"
 import { useTransition } from "react"
 import { toast } from "sonner"
+import { onFollow, onUnfollow } from "@/actions/follow"
+import { Button } from "@/components/ui/button"
 
 type Props = {
     userId: string
@@ -12,7 +12,7 @@ type Props = {
 const Actions = ({ userId, isFollowing }: Props) => {
     const [isPending, startTransition] = useTransition();
 
-    const onClick = () => {
+    const handleFollow = () => {
         startTransition(() => {
             onFollow(userId)
                 .then((data) => toast.success(`You are now following ${data.following.username}`))
@@ -20,12 +20,20 @@ const Actions = ({ userId, isFollowing }: Props) => {
         });
     }
 
+    const handleUnfollow = () => {
+        startTransition(() => {
+            onUnfollow(userId)
+                .then((data) => toast.success(`You have unfollowed ${data.following.username}`))
+                .catch((error) => toast.error(error?.message));
+        });
+    }
+
     return (
         <Button
-            disabled={!(isFollowing || isPending)}
-            onClick={onClick}
+            disabled={isPending}
+            onClick={isFollowing ? handleUnfollow : handleFollow}
         >
-            Follow
+            {isFollowing ? "Unfollow" : "Follow"}
         </Button>
     )
 }
