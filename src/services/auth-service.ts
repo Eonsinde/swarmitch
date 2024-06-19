@@ -24,3 +24,23 @@ export const getUser = async (activeSessionExpected=true) => {
 
     return user;
 }
+
+export const getUserByUsername = async (username: string) => {
+    const clerkUser = await currentUser();
+
+    if (!clerkUser || !clerkUser.username)
+        throw new Error("Unauthorized");
+
+    const user = await db.user.findUnique({
+        where: { username }
+    });
+
+    if (!user)
+        throw new Error("User not found");
+
+    if (clerkUser.username !== user.username) 
+        // to prevent you from viewing another person's creator dashboard
+        throw new Error("Unauthorized");
+
+    return user;
+}

@@ -1,6 +1,5 @@
 import { Suspense } from "react"
-import { redirect } from "next/navigation"
-import { getUser } from "@/actions/auth-service"
+import { getUser } from "@/services/auth-service"
 import Container from "./_components/container"
 import Navbar from "./_components/navbar"
 import Sidebar, { SidebarSkeleton } from "./_components/sidebar"

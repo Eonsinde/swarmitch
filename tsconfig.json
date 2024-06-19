@@ -25,6 +25,7 @@
       "@/lib/*": ["./src/lib/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/hooks/*": ["./src/hooks/*"],
+      "@/services/*": ["./src/services/*"],
       "@/providers/*": ["./src/providers/*"],
       "@/actions/*": ["./src/actions/*"],
       "@/types/*": ["./src/types/*"],

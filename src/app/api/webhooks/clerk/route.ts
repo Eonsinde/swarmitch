@@ -51,7 +51,12 @@ export async function POST(req: Request) {
                 data: {
                     clerkUserId: payload.data.id,
                     username: payload.data.username,
-                    imageUrl: payload.data.image_url
+                    imageUrl: payload.data.image_url,
+                    stream: {
+                        create: {
+                            name: `${payload.data.usernme}'s stream`
+                        }
+                    }
                 }
             });
             break;

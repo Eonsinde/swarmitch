@@ -35,7 +35,7 @@ export default function UserItem({
                 ),
                 variant: "ghost"
             })}
-            href={`${href}`}
+            href={href}
         >
             <div className={cn(
                 "flex items-center w-full gap-x-4",

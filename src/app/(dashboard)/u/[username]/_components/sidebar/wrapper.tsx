@@ -1,13 +1,13 @@
 "use client"
-import { useSidebar } from "@/store/use-sidebar"
 import { cn } from "@/lib/utils"
+import { useCreatorSidebar } from "@/store/use-creator-sidebar"
 
 type Props = {
     children: React.ReactNode
 }
 
 const Wrapper = ({ children }: Props) => {
-    const { collapsed } = useSidebar();
+    const { collapsed } = useCreatorSidebar();
 
     return (
         <aside className={cn(

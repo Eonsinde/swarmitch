@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
-import { getUserByUsername } from "@/actions/user-service"
-import { isFollowingUser } from "@/actions/follow-service"
+import { getUserByUsername } from "@/services/user-service"
+import { isFollowingUser } from "@/services/follow-service"
+import { isBlockedByUser } from "@/services/block-service"
 import Actions from "./_components/actions"
 
 type Props = {
@@ -18,6 +19,10 @@ const UserDetails = async ({ params: { username } }: Props) => {
 
     // check to see if you're following the requested user
     const isFollowing = await isFollowingUser(user.id);
+    const isBlocked = await isBlockedByUser(user.id);
+
+    if (isBlocked)
+        notFound();
 
     return (
         <div>

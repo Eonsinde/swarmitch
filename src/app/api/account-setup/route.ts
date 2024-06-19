@@ -22,13 +22,18 @@ export const GET = async (req: Request) => {
             data: {
                 clerkUserId: clerkUser.id,
                 username: clerkUser.username,
-                imageUrl: clerkUser.imageUrl
+                imageUrl: clerkUser.imageUrl,
+                stream: {
+                    create: {
+                        name: `${clerkUser.username}'s stream`
+                    }
+                }
             }
         });
 
         return NextResponse.json(newUser, { status: 201 });
-    } catch (err) {
-        console.log("[ACCOUNT_SETUP]:", err);
+    } catch (err: any) {
+        console.log("[ACCOUNT_SETUP]:", err?.message);
         return new NextResponse("Server Error", { status: 500 });
     }
 }

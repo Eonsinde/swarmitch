@@ -8,7 +8,7 @@ const Actions = async () => {
     const user = await currentUser();
 
     return (
-        <div className="flex justify-end items-center gap-x-2 ml-4 lg:ml-0">
+        <div className="flex justify-end items-center gap-x-2">
             {!user && (
                 <SignInButton>
                     <Button
