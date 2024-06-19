@@ -3,6 +3,7 @@ import { useTransition } from "react"
 import { updateStream } from "@/actions/stream"
 import { toast } from "sonner"
 import { Switch } from "@/components/ui/switch"
+import { Skeleton } from "@/components/ui/skeleton"
 
 type FieldTypes = "isChatEnabled" | "isChatDelayed" | "isChatFollowersOnly";
 
@@ -12,11 +13,11 @@ type Props = {
     value: boolean
 }
 
-const ToggleCard = ({
+export default function ToggleCard({
     field,
     label,
     value
-}: Props) => {
+}: Props) {
     const [isPending, startTransition] = useTransition();
 
     const onChange = () => {
@@ -45,4 +46,8 @@ const ToggleCard = ({
     )
 }
 
-export default ToggleCard
+export function ToggleCardSkeleton() {
+    return (
+        <Skeleton className="p-9 w-full rounded-xl" />
+    )
+}

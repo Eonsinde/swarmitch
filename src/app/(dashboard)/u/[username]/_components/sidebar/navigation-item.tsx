@@ -56,7 +56,7 @@ export function NavigationItemSkeleton() {
     return (
         <li className={cn(
             "flex items-center py-2 px-3",
-            collapsed ? "justify-center" : "justify-start lg:space-x-4"
+            collapsed ? "justify-center" : "justify-center lg:justify-start lg:space-x-4"
         )}>
             <Skeleton className="min-h-[32px] min-w-[32px] rounded-md" />
             <div className={cn(
