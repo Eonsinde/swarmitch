@@ -21,7 +21,6 @@ const Actions = async () => {
                 </span>
             </Link>
             <UserButton afterSignOutUrl="/" />
-
         </div>
     )
 }

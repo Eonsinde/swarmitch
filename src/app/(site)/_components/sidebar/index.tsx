@@ -8,13 +8,13 @@ import Recommended, { RecommendedSkeleton } from "./recommended"
 export default async function Sidebar() {
     // fetch recommended users
     const recommended = await getRecommended();
-    const following = await getFollowedUsers();
+    const followEntries = await getFollowedUsers();
 
     return (
         <Wrapper>
             <Toggle />
             <div className="space-y-4 pt-4 lg:pt-0">
-                <Following following={following} />
+                <Following entries={followEntries} />
                 <Recommended users={recommended} />
             </div>
         </Wrapper>
